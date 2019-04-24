@@ -1,0 +1,201 @@
+<resources>
+    <string name="app_name">WenReader</string>
+
+    <!--string_array-->
+    <string-array name="fragment_title">
+        <item>@string/fragment_title_bookshelf</item>
+        <item>@string/fragment_title_community</item>
+        <item>@string/fragment_title_discover</item>
+    </string-array>
+
+    <string-array name="nb_fragment_section">
+        <item>@string/fragment_community_comment</item>
+        <item>@string/fragment_community_discussion</item>
+        <item>@string/fragment_community_help</item>
+        <item>@string/fragment_community_girl</item>
+        <item>@string/fragment_community_compose</item>
+    </string-array>
+
+    <!--榜单分类-->
+    <string-array name="nb_fragment_bill_book">
+        <item>周榜</item>
+        <item>月榜</item>
+        <item>总榜</item>
+    </string-array>
+
+    <!--CollBook的长按点击-->
+    <string-array name="nb_menu_net_book">
+        <item>@string/menu_action_top</item>
+        <item>@string/menu_action_cache</item>
+        <item>@string/menu_action_delete</item>
+        <item>@string/menu_action_batch_manage</item>
+    </string-array>
+
+    <string-array name="nb_menu_local_book">
+        <item>@string/menu_action_top</item>
+        <item>@string/menu_action_delete</item>
+        <item>@string/menu_action_batch_manage</item>
+    </string-array>
+
+    <!--常用-->
+    <string name="common_tip">提示</string>
+    <string name="common_sure">确定</string>
+    <string name="common_cancel">取消</string>
+
+    <!--网络相关-->
+
+    <string name="net_error_tip">似乎没有网络哦</string>
+
+    <!--fragment_title:主页的名字-->
+    <string name="fragment_title_bookshelf">书架</string>
+    <string name="fragment_title_community">社区</string>
+    <string name="fragment_title_discover">发现</string>
+
+    <!--fragment-->
+    <string name="fragment_community_comment">综合讨论区</string>
+    <string name="fragment_community_discussion">书评区</string>
+    <string name="fragment_community_help">书荒帮助区</string>
+    <string name="fragment_community_girl">女生区</string>
+    <string name="fragment_community_compose">原创区</string>
+
+    <!--fragment 主题书单-->
+    <string name="fragment_book_list_hot">本周最热</string>
+    <string name="fragment_book_list_newest">最新发布</string>
+    <string name="fragment_book_list_collect">最多收藏</string>
+
+    <string name="fragment_book_list_message">共%1$d本书 |&#160; %2$d人收藏</string>
+
+    <!--评论相关-->
+    <string name="comment_floor">%1$d楼&#160;</string>
+    <string name="comment_like_count">❤%1$d次同感</string>
+    <string name="comment_best_comment">仰望神评论</string>
+    <string name="comment_comment_count">共%1$d条评论</string>
+    <string name="comment_reply_floor">(%1$d楼)</string>
+    <string name="comment_reply_nickname">回复 %1$s</string>
+    <string name="comment_empty_comment">暂无评论</string>
+
+    <!--书评区相关-->
+    <string name="review_book_type">[%1$s]</string>
+    <string name="review_recommend">%1$d 人推荐</string>
+    <string name="review_helpful">有用</string>
+    <string name="review_unhelpful">无用</string>
+    <string name="review_book_score">给书评打分</string>
+    <string name="review_master_score">楼主打分：</string>
+
+
+    <!--find-->
+    <string name="fragment_find_top">排行榜</string>
+    <string name="fragment_find_topic">主题书单</string>
+    <string name="fragment_find_sort">分类</string>
+    <string name="fragment_find_listen">有声小说</string>
+
+    <!--dialog-->
+    <string name="dialog_text_introduce">我们会根据您的喜好\n推荐相对应的小说</string>
+    <string name="dialog_text_choose_tip">--请选择你的喜好--</string>
+    <string name="dialog_text_boy_story">男生小说</string>
+    <string name="dialog_text_girl_story">女生小说</string>
+
+    <!--menu-->
+    <string name="menu_action_search">搜索</string>
+    <string name="menu_action_login">请登录</string>
+    <string name="menu_action_message">我的消息</string>
+    <string name="menu_action_download">下载列表</string>
+    <string name="menu_action_sync">同步书架</string>
+    <string name="menu_action_scan">添加本地书籍</string>
+    <string name="menu_action_transfer">WIFI传书</string>
+    <string name="menu_action_feedback">意见反馈</string>
+    <string name="menu_action_night_mode">夜间模式</string>
+    <string name="menu_action_setting">设置</string>
+
+    <string name="menu_action_top">置顶</string>
+    <string name="menu_action_cache">缓存</string>
+    <string name="menu_action_delete">删除</string>
+    <string name="menu_action_batch_manage">批量管理</string>
+
+    <!--SplashActivity-->
+    <string name="splash_skip">跳过</string>
+
+    <!--user:用户的信息-->
+    <string name="user_lv">&#160;lv_%1$d</string>
+    <!--book:书籍的信息-->
+    <string name="book_type">[%1$s]</string>
+    <string name="book_recommend">%1$d 人推荐</string>
+    <string name="book_message">%1$d人在追 |&#160; %2$s%%读者留存</string>
+    <string name="book_word">|&#160;%1$d&#160;万字</string>
+    <!--sort:每类的书-->
+    <string name="sort_book_count">%1$d 本</string>
+
+    <!--tag: 标签-->
+    <string name="tag_all">全部</string>
+    <string name="tag_sex">性别</string>
+    <string name="tag_boy">男生</string>
+    <string name="tag_girl">女生</string>
+
+
+    <!--book_detail : -->
+    <string name="book_detail_hot_comment">热门书评</string>
+    <string name="book_detail_community">%1$s的社区</string>
+    <string name="book_detail_posts_count">共有%1$d个帖子</string>
+    <string name="book_detail_recommend_book_list">推荐书单</string>
+    <string name="book_detail_chase_update">追更</string>
+    <string name="book_detail_give_up">放弃</string>
+    <string name="book_detail_start_read">开始阅读</string>
+
+    <!--DownloadTask:书籍下载-->
+    <string name="download_add_succeed">成功添加到下载列表</string>
+    <string name="download_exist">该任务已存在</string>
+    <string name="download_load_all">已缓存全部章节</string>
+    <string name="download_progress">%1$d/%2$d</string>
+    <string name="download_chapter_scope">(%1$d-%2$d章)</string>
+
+    <string name="download_start">继续</string>
+    <string name="download_pause">暂停</string>
+    <string name="download_wait">等待</string>
+    <string name="download_error">错误</string>
+    <string name="download_finish">完成</string>
+
+    <string name="download_loading">下载中</string>
+    <string name="download_waiting">等待中</string>
+    <string name="download_pausing">暂停中</string>
+    <string name="download_complete">已完成</string>
+    <string name="download_source_error">资源或网络错误</string>
+
+    <!--mode-->
+    <string name="mode_night">夜间</string>
+    <string name="mode_morning">日间</string>
+
+    <!--read-->
+    <string name="read_community">社区</string>
+    <string name="read_brief">简介</string>
+    <string name="read_setting">设置</string>
+    <string name="read_download">缓存</string>'
+    <string name="read_catalog">目录</string>
+    <string name="read_no_chapter">第 %1$d 章(%2$d)</string>
+    <string name="brightness_auto">跟随系统</string>
+    <string name="default_size_button">默认</string>
+    <string name="default_text_size">15</string>
+    <string name="text_size_larger">Aa+</string>
+    <string name="text_size_smaller">Aa-</string>
+
+    <!--file system-->
+    <string name="file_sub_count">%1$d 项</string>
+    <string name="file_path">存储卡:%1$s</string>
+    <string name="file_add_shelf">加入书架</string>
+    <string name="file_add_shelves">加入书架(%1$d)</string>
+    <string name="file_add_succeed">成功添加%1$d本书</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="book_add">添加你喜欢的小说</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!--上下文操作模式-->
+    <string name="actionMode_delete">删除</string>
+    <string name="actionMode_done_all">全选</string>
+    <string name="title_activity_local_file">LocalFileActivity</string>
+
+    <string name="local_file_scan">智能导入</string>
+    <string name="local_file_catalog">手机目录</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+</resources>

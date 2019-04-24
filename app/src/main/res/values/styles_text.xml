@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<!--Common-->
+	<style name="CommonTheme.TextAppearance.Common"/>
+	<style name="CommonTheme.TextAppearance.Common.SingleLine">
+		<item name="android:singleLine">true</item>
+		<item name="android:maxLines">1</item>
+		<item name="android:ellipsize">end</item>
+	</style>
+
+	<!--表示领域-->
+	<style name="CommonTheme.TextAppearance.Billboard"/>
+	<style name="CommonTheme.TextAppearance.Billboard.Title">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:padding">10dp</item>
+		<item name="android:textColor">@color/text_default</item>
+		<item name="android:textSize">@dimen/text_large</item>
+	</style>
+
+	<!--书籍-->
+	<style name="CommonTheme.TextAppearance.Book"/>
+	<style name="CommonTheme.TextAppearance.Book.Name">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:ellipsize">end</item>
+		<item name="android:singleLine">true</item>
+		<item name="android:textColor">@color/text_default</item>
+		<item name="android:textSize">16sp</item>
+	</style>
+
+	<!--ReadActivity-->
+	<style name="CommonTheme.TextAppearance.Read"></style>
+	<style name="CommonTheme.TextAppearance.Read.TopMenu">
+		<item name="android:layout_width">50dp</item>
+		<item name="android:layout_height">match_parent</item>
+		<item name="android:gravity">center</item>
+		<item name="android:textColor">@color/read_menu_text</item>
+		<item name="android:textSize">@dimen/read_text_top</item>
+	</style>
+	<style name="CommonTheme.TextAppearance.Read.BottomMenu">
+		<item name="android:textColor">@color/read_menu_text</item>
+		<item name="android:textSize">@dimen/read_text_bottom</item>
+		<item name="android:gravity">center</item>
+	</style>
+
+
+	<style name="CommonTheme.TextAppearance.Read.BottomMenu.Button"
+		parent="CommonTheme.TextAppearance.Read.BottomMenu">
+		<item name="android:layout_width">0dp</item>
+		<item name="android:layout_height">40dp</item>
+		<item name="android:layout_marginBottom">8dp</item>
+		<item name="android:gravity">center_horizontal|center_vertical</item>
+		<item name="android:drawableTint">@color/read_menu_text</item>
+	</style>
+
+	<style name="CommonTheme.TextAppearance.Read.BottomMenu.ChapterButton"
+		parent="CommonTheme.TextAppearance.Read.BottomMenu">
+		<item name="android:layout_width">90dp</item>
+		<item name="android:layout_height">50dp</item>
+		<item name="android:layout_marginBottom">8dp</item>
+		<item name="android:gravity">center</item>
+		<item name="android:drawableTint">@color/read_menu_text</item>
+	</style>
+
+
+	<style name="CommonTheme.TextAppearance.File"/>
+	<style name="CommonTheme.TextAppearance.File.Tag">
+		<item name="android:layout_width">38dp</item>
+		<item name="android:layout_height">18dp</item>
+		<item name="android:textSize">12sp</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:gravity">center</item>
+	</style>
+</resources>

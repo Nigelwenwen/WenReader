@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.nigel.wenreader.viewmodel.adapter.DialogSettingBindingAdapter"
+            alias="adapter"/>
+        <import type="com.nigel.wenreader.adapter.PageStyleAdapter"/>
+
+        <variable
+            name="presenter"
+            type="com.nigel.wenreader.ui.fragment.ReadSettingDialogFragment.SettingPresenter"/>
+
+        <variable
+            name="viewModel"
+            type="com.nigel.wenreader.viewmodel.DialogSettingViewModel"/>
+
+        <variable
+            name="layoutManager"
+            type="android.support.v7.widget.RecyclerView.LayoutManager"/>
+
+    </data>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:background="@color/read_menu_bg"
+        android:paddingLeft="12dp"
+        android:paddingTop="20dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="12dp">
+
+        <CheckBox
+            android:id="@+id/brightness_auto"
+            style="@style/CommonTheme.TextAppearance.Read.BottomMenu"
+            android:layout_width="80dp"
+            android:layout_height="@dimen/read_setting_btn_height"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/selector_btn_read_setting"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/brightness_auto"
+            android:textColor="@color/selector_btn_read_setting"
+            android:checked="@={viewModel.isBrightnessAuto}"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:scaleType="center"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toStartOf="@+id/brightness_auto"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_brightness_plus" />
+
+        <SeekBar
+            android:id="@+id/brightness"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:max="255"
+            android:maxHeight="3dp"
+            android:minHeight="3dp"
+            android:progress="@{viewModel.brightness}"
+            android:onProgressChanged="@{presenter::onProgressChanged}"
+            android:progressDrawable="@drawable/seekbar_bg"
+            android:thumb="@drawable/seekbar_thumb"
+            android:thumbOffset="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:progress="50"/>
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_brightness_minus" />
+
+        <CheckBox
+            android:id="@+id/read_default_size"
+            style="@style/CommonTheme.TextAppearance.Read.BottomMenu"
+            android:layout_width="40dp"
+            android:layout_height="@dimen/read_setting_btn_height"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/selector_btn_read_setting"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/default_size_button"
+            android:textColor="@color/selector_btn_read_setting"
+            android:checked="@={viewModel.isTextDefault}"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.20" />
+
+        <TextView
+            android:id="@+id/textsize_plus"
+            style="@style/CommonTheme.TextAppearance.Read.BottomMenu"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/read_setting_btn_height"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/selector_btn_read_setting"
+            android:text="@string/text_size_larger"
+            android:textSize="18dp"
+            android:onClick="@{presenter.fontPlusClick}"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintEnd_toStartOf="@+id/SCC_TCC"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@+id/textsize"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+        <TextView
+            android:id="@+id/SCC_TCC"
+            style="@style/CommonTheme.TextAppearance.Read.BottomMenu"
+            android:layout_width="40dp"
+            android:layout_height="@dimen/read_setting_btn_height"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/selector_btn_read_setting"
+            android:button="@null"
+            android:gravity="center"
+            android:text="繁"
+            android:textColor="@color/selector_btn_read_setting"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintEnd_toStartOf="@+id/read_default_size"
+            app:layout_constraintStart_toEndOf="@+id/textsize_plus"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.4" />
+
+        <TextView
+            android:id="@+id/textsize"
+            style="@style/CommonTheme.TextAppearance.Read.BottomMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@{adapter.convertIntToString(viewModel.textSize)}"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintEnd_toStartOf="@+id/textsize_plus"
+            app:layout_constraintStart_toEndOf="@+id/textsize_minus"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            tools:text="@string/default_text_size" />
+
+        <TextView
+            android:id="@+id/textsize_minus"
+            style="@style/CommonTheme.TextAppearance.Read.BottomMenu"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/read_setting_btn_height"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/selector_btn_read_setting"
+            android:text="@string/text_size_smaller"
+            android:textSize="14dp"
+            android:onClick="@{presenter::fontMinusClick}"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintEnd_toStartOf="@+id/textsize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+        <RadioGroup
+            android:id="@+id/pageModeGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            android:checkedButton="@={adapter.pageModeToId(viewModel.pageMode)}"
+            app:layout_constraintBottom_toTopOf="@+id/guideline4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline2">
+
+            <RadioButton
+                android:id="@+id/read_setting_simulation"
+                style="@style/CommonTheme.TextAppearance.Read.BottomMenu"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/read_setting_btn_height"
+                android:layout_marginRight="18dp"
+                android:layout_weight="1"
+                android:background="@drawable/selector_btn_read_setting"
+                android:button="@null"
+                android:gravity="center"
+                android:text="仿真"
+                android:textSize="14dp" />
+
+            <RadioButton
+                android:id="@+id/read_setting_cover"
+                style="@style/CommonTheme.TextAppearance.Read.BottomMenu"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/read_setting_btn_height"
+                android:layout_marginRight="18dp"
+                android:layout_weight="1"
+                android:background="@drawable/selector_btn_read_setting"
+                android:button="@null"
+                android:gravity="center"
+                android:text="覆盖"
+                android:textSize="14dp" />
+
+            <RadioButton
+                android:id="@+id/read_setting_scroll"
+                style="@style/CommonTheme.TextAppearance.Read.BottomMenu"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/read_setting_btn_height"
+                android:layout_marginRight="18dp"
+                android:layout_weight="1"
+                android:background="@drawable/selector_btn_read_setting"
+                android:button="@null"
+                android:gravity="center"
+                android:text="滑动"
+                android:textSize="14dp" />
+
+            <RadioButton
+                android:id="@+id/read_setting_none"
+                style="@style/CommonTheme.TextAppearance.Read.BottomMenu"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/read_setting_btn_height"
+                android:layout_weight="1"
+                android:background="@drawable/selector_btn_read_setting"
+                android:button="@null"
+                android:gravity="center"
+                android:text="无"
+                android:textSize="14dp" />
+        </RadioGroup>
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/read_setting_rv_bg"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:scrollbars="none"
+            app:list="@{viewModel.colors}"
+            app:checked="@{viewModel.pageStyle}"
+            app:onItemClick="@{presenter.onBgItemClick}"
+            app:layoutManager="android.support.v7.widget.GridLayoutManager"
+            app:spanCount="5"
+            app:adapter="@{PageStyleAdapter.getInstance}"
+            app:layout_constraintBottom_toTopOf="@+id/read_setting_more"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+        <TextView
+            android:id="@+id/read_setting_more"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_horizontal"
+            android:text="更多设置 >>"
+            android:textColor="@color/read_menu_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/read_setting_rv_bg" />
+
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

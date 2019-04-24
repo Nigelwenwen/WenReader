@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/shelfFragment"
+        android:icon="@drawable/ic_book_shelf"
+        android:title="@string/fragment_title_bookshelf"/>
+    <item
+        android:id="@+id/communityFragment"
+        android:icon="@drawable/ic_community"
+        android:title="@string/fragment_title_community"/>
+    <item
+        android:id="@id/discoverFragment"
+        android:icon="@drawable/ic_discover"
+        android:title="@string/fragment_title_discover"/>
+</menu>

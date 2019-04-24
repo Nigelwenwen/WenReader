@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/shelfFragment">
+
+    <fragment
+        android:id="@+id/shelfFragment"
+        android:name="com.nigel.wenreader.ui.fragment.ShelfFragment"
+        tools:layout="@layout/fragment_shelf" >
+        <action
+            android:id="@+id/openReadAction"
+            app:destination="@id/readActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/communityFragment"
+        android:name="com.nigel.wenreader.ui.fragment.CommunityFragment"
+        tools:layout="@layout/fragment_community" ></fragment>
+    <fragment
+        android:id="@+id/discoverFragment"
+        android:name="com.nigel.wenreader.ui.fragment.DiscoverFragment"
+        tools:layout="@layout/fragment_discover" />
+    <activity
+        android:id="@+id/readActivity"
+        android:name="com.nigel.wenreader.ui.activity.ReadActivity"
+        android:label="activity_read"
+        tools:layout="@layout/activity_read" />
+</navigation>

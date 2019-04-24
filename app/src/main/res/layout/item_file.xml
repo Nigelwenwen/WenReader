@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="file"
+            type="com.nigel.wenreader.model.local.FileBean"/>
+        <variable
+            name="isSelectAll"
+            type="boolean"/>
+        <variable
+            name="adapter"
+            type="com.nigel.wenreader.adapter.FileSystemAdapter"/>
+    </data>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/selector_common_bg"
+        android:baselineAligned="false">
+
+        <FrameLayout
+            android:id="@+id/file_fl_icon"
+            android:layout_width="60dp"
+            android:layout_height="match_parent">
+            <!--文件夹标识或已选文件标识-->
+            <ImageView
+                android:id="@+id/file_iv_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+                android:src="@drawable/ic_dir"
+                android:visibility="@{file.folder?View.VISIBLE:View.GONE}"
+                tools:visibility="visible" />
+            <!--选择是否添加文件-->
+            <CheckBox
+                android:id="@+id/file_cb_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:checked="@{file.isAdded||file.isFolder?false:isSelectAll}"
+                android:visibility="@{file.isAdded||file.isFolder?View.GONE:View.VISIBLE}"
+                tools:visibility="gone"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="已添加"
+                android:visibility="@{file.isAdded?View.VISIBLE:View.GONE}"
+                tools:visibility="gone"/>
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                style="@style/CommonTheme.TextAppearance.Common.SingleLine"
+                android:id="@+id/file_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="@{file.fileName}"
+                tools:text="五年高考 三年模拟" />
+
+            <LinearLayout
+                android:id="@+id/file_ll_brief"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_alignParentBottom="true"
+                android:visibility="@{file.isFolder?View.GONE:View.VISIBLE}"
+                tools:visibility="gone">
+
+                <TextView
+                    style="@style/CommonTheme.TextAppearance.File.Tag"
+                    android:id="@+id/file_tv_tag"
+                    android:layout_marginEnd="15dp"
+                    android:text="TXT"
+                    android:background="@drawable/ic_tag_txt" />
+
+                <TextView
+                    android:id="@+id/file_tv_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:text="@{file.fileSize}"
+                    tools:text="999TB" />
+
+                <TextView
+                    android:id="@+id/file_tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{file.fileDate}"
+                    tools:text="2017-05-22" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/file_tv_sub_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="@{@string/file_sub_count(file.subCount)}"
+                tools:text="0 项"
+                android:visibility="@{file.folder?View.VISIBLE:View.GONE}"
+                tools:visibility="visible"/>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

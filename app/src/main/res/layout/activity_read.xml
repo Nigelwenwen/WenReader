@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.activity.ReadActivity">
+    
+    <data>
+        <import type="android.view.View"/>
+        <import type="android.support.v4.widget.DrawerLayout"/>
+        <import type="com.nigel.wenreader.adapter.CatalogAdapter"/>
+        <variable
+            name="title"
+            type="String"/>
+        <variable
+            name="presenter"
+            type="com.nigel.wenreader.ui.activity.ReadActivity.Presenter"/>
+        <variable
+            name="pageLoader"
+            type="com.nigel.wenreader.widget.page.PageLoader"/>
+        <variable
+            name="isNightMode"
+            type="boolean"/>
+        <variable
+            name="menuVisiable"
+            type="boolean"/>
+        <variable
+            name="bgColor"
+            type="Integer"/>
+
+    </data>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="false"
+        app:drawerLockMode="@{DrawerLayout.LOCK_MODE_LOCKED_CLOSED}">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/theme_leather_bg">
+
+            <com.nigel.wenreader.widget.page.PageView
+                android:id="@+id/page_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:touchListener="@{presenter.touchListener}"
+                tools:visibility="gone" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/read_menu_bg"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="@style/Theme.ToolBar.Menu"
+                android:visibility="gone"
+                tools:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:navigationOnClickListener="@{(v)->presenter.finish(v)}"
+                app:title="@{title}">
+
+                <RelativeLayout
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="right">
+
+                    <TextView
+                        android:id="@+id/read_brief"
+                        style="@style/CommonTheme.TextAppearance.Read.TopMenu"
+                        android:layout_alignParentRight="true"
+                        android:onClick="@{presenter::briefClick}"
+                        android:text="@string/read_brief" />
+
+                    <TextView
+                        android:id="@+id/read_community"
+                        style="@style/CommonTheme.TextAppearance.Read.TopMenu"
+                        android:layout_alignParentTop="true"
+                        android:layout_toLeftOf="@id/read_brief"
+                        android:onClick="@{presenter::communityClick}"
+                        android:text="@string/read_community" />
+                </RelativeLayout>
+
+
+            </android.support.v7.widget.Toolbar>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/bottom_menu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/read_menu_bg"
+                android:visibility="gone"
+                tools:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                app:layout_constraintVertical_bias="1.0"
+                app:layout_constraintVertical_chainStyle="spread">
+
+
+                <TextView
+                    android:id="@+id/read_catalog"
+                    style="@style/CommonTheme.TextAppearance.Read.BottomMenu.Button"
+                    android:text="@string/read_catalog"
+                    android:drawableTop="@drawable/ic_read_catalog"
+                    android:onClick="@{presenter::catalogClick}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/read_night_mode"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/read_night_mode"
+                    style="@style/CommonTheme.TextAppearance.Read.BottomMenu.Button"
+                    android:drawableTop="@{!isNightMode?@drawable/ic_read_night:@drawable/ic_read_morning}"
+                    tools:drawableTop="@drawable/ic_read_night"
+                    android:text="@{!isNightMode?@string/mode_night:@string/mode_morning}"
+                    tools:text="@string/mode_night"
+                    android:onClick="@{presenter::nightModeClick}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/read_cache"
+                    app:layout_constraintStart_toEndOf="@+id/read_catalog" />
+
+                <TextView
+                    android:id="@+id/read_cache"
+                    style="@style/CommonTheme.TextAppearance.Read.BottomMenu.Button"
+                    android:drawableTop="@drawable/ic_read_download"
+                    android:text="@string/read_download"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/read_setting"
+                    app:layout_constraintStart_toEndOf="@+id/read_night_mode" />
+
+                <TextView
+                    android:id="@+id/read_setting"
+                    style="@style/CommonTheme.TextAppearance.Read.BottomMenu.Button"
+                    android:drawableTop="@drawable/ic_read_setting"
+                    android:text="@string/read_setting"
+                    android:onClick="@{presenter::dialogClick}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/read_cache" />
+
+                <TextView
+                    android:id="@+id/read_prev"
+                    style="@style/CommonTheme.TextAppearance.Read.BottomMenu.ChapterButton"
+                    android:onClick="@{presenter::preClick}"
+                    android:text="上一章"
+                    app:layout_constraintBottom_toTopOf="@+id/read_catalog"
+                    app:layout_constraintEnd_toStartOf="@+id/seekBar"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/read_next"
+                    style="@style/CommonTheme.TextAppearance.Read.BottomMenu.ChapterButton"
+                    android:text="下一章"
+                    android:onClick="@{presenter::nextClick}"
+                    app:layout_constraintBottom_toTopOf="@+id/read_setting"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/seekBar"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <SeekBar
+                    android:id="@+id/seekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:maxHeight="3dp"
+                    android:minHeight="3dp"
+                    android:progressDrawable="@drawable/seekbar_bg"
+                    android:thumb="@drawable/seekbar_thumb"
+                    android:thumbOffset="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/read_night_mode"
+                    app:layout_constraintEnd_toStartOf="@+id/read_next"
+                    app:layout_constraintStart_toEndOf="@+id/read_prev"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/read_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/read_menu_bg"
+                android:gravity="center"
+                android:paddingLeft="12dp"
+                android:paddingTop="8dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="8dp"
+                tools:text="1/12"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                tools:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/bottom_menu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@{bgColor}"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/padding_large"
+            android:paddingBottom="@dimen/padding_large">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="8dp"
+                android:text="@{title}"
+                android:textColor="@color/text_default"
+                android:textSize="20sp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/chapter_catalog"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:fastScrollEnabled="true"
+                app:fastScrollVerticalThumbDrawable="@drawable/thumb_drawable"
+                app:fastScrollVerticalTrackDrawable="@drawable/line_drawable"
+                app:fastScrollHorizontalThumbDrawable="@drawable/thumb_drawable"
+                app:fastScrollHorizontalTrackDrawable="@drawable/line_drawable"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                tools:layoutManager="LinearLayoutManager"
+                tools:listitem="@layout/item_catalog"/>
+        </LinearLayout>
+    </android.support.v4.widget.DrawerLayout>
+</layout>

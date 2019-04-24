@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="checked"
+            type="Boolean"/>
+        <variable
+            name="color"
+            type="Integer"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_color_1"
+            android:backgroundTint="@{color}"
+            tools:backgroundTint="@color/read_bg_1"/>
+
+        <View
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_color_2"
+            android:visibility="@{checked?View.VISIBLE:View.GONE}" />
+
+    </FrameLayout>
+</layout>
